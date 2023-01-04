@@ -11,7 +11,7 @@ function Data2() {
   const [rowData, setRowData] = useState();
   const [options, setOptions] = useState({
     symbol: "NSE:NIFTYBANK-INDEX",
-    timeframe: "1",
+    timeframe: "5",
   });
 
   const [columnDefs, setColumnDefs] = useState([
@@ -58,6 +58,111 @@ function Data2() {
         return round(params.data[2] - params.data[3]);
       },
     },
+
+    {
+      headerName: "Buy Above 60% of Range",
+      valueGetter: (params) => {
+        return round(
+          params.data[3] + (params.data[2] - params.data[3]) * 0.618
+        );
+      },
+    },
+    {
+      headerName: "Buy Tgt 1",
+      valueGetter: (params) => {
+        return round(
+          params.data[3] + (params.data[2] - params.data[3]) * 1.618
+        );
+      },
+    },
+    {
+      headerName: "Buy Tgt 2",
+      valueGetter: (params) => {
+        return round(
+          params.data[3] + (params.data[2] - params.data[3]) * 2.618
+        );
+      },
+    },
+    {
+      headerName: "Buy Tgt 3",
+      valueGetter: (params) => {
+        return round(
+          params.data[3] + (params.data[2] - params.data[3]) * 3.618
+        );
+      },
+    },
+    {
+      headerName: "Buy Tgt 4",
+      valueGetter: (params) => {
+        return round(
+          params.data[3] + (params.data[2] - params.data[3]) * 4.236
+        );
+      },
+    },
+    {
+      headerName: "Sell Below",
+      valueGetter: (params) => {
+        return round(
+          params.data[2] - (params.data[2] - params.data[3]) * 0.618
+        );
+      },
+    },
+    {
+      headerName: "Sell Tgt 1",
+      valueGetter: (params) => {
+        return round(
+          params.data[2] - (params.data[2] - params.data[3]) * 1.618
+        );
+      },
+    },
+    {
+      headerName: "Sell Tgt 2",
+      valueGetter: (params) => {
+        return round(
+          params.data[2] - (params.data[2] - params.data[3]) * 2.618
+        );
+      },
+    },
+    {
+      headerName: "Sell Tgt 3",
+      valueGetter: (params) => {
+        return round(
+          params.data[2] - (params.data[2] - params.data[3]) * 3.618
+        );
+      },
+    },
+    {
+      headerName: "Sell Tgt 4",
+      valueGetter: (params) => {
+        return round(
+          params.data[2] - (params.data[2] - params.data[3]) * 4.236
+        );
+      },
+    },
+
+    {
+      headerName: "Buy Stop Loss",
+      valueGetter: (params) => {
+        return round(
+          params.data[2] - (params.data[2] - params.data[3]) * 0.618 //SELL BELOW
+        );
+      },
+    },
+    {
+      headerName: "Sell Stop Loss",
+      valueGetter: (params) => {
+        return round(
+          params.data[3] + (params.data[2] - params.data[3]) * 0.618 //BUY ABOVE
+        );
+      },
+    },
+
+    {
+      headerName: "Buy Trigger",
+      valueGetter: (params) => {
+        console.log();
+      },
+    },
   ]);
 
   const onBtnExport = useCallback(() => {
@@ -69,6 +174,8 @@ function Data2() {
   }, []);
 
   const { symbol, timeframe } = options;
+  const From = "2022-07-28";
+  const To = "2022-07-28";
   const defaultColDef = useMemo(() => {
     return {
       sortable: true,
@@ -77,7 +184,7 @@ function Data2() {
       resizable: true,
     };
   }, []);
-  const URL = `http://localhost:3000/history?symbol=${symbol}&timeframe=${timeframe}`;
+  const URL = `http://localhost:3000/history?symbol=${symbol}&timeframe=${timeframe}&setFrom=${From}&setTo=${To}`;
   const onGridReady = useCallback((params) => {
     console.log("Ready");
     fetch(URL)

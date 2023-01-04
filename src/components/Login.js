@@ -10,20 +10,17 @@ import {
 } from "@material-ui/core";
 import { url } from "./config";
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 const Login = () => {
   const URL = url;
   const paperStyle = {
     padding: 30,
-    height: "70vh",
+    height: "45vh",
     width: 280,
     margin: "20px auto",
   };
 
   const [options, setOptions] = useState({
     authCode: "",
-    authToken: "",
   });
 
   const { authCode, authToken } = options;
@@ -49,7 +46,7 @@ const Login = () => {
           fullWidth
           required
         />
-        <TextField
+        {/* <TextField
           label="TokenCode"
           value={authToken}
           onChange={(e) => {
@@ -59,7 +56,7 @@ const Login = () => {
           variant="outlined"
           fullWidth
           required
-        />
+        /> */}
         {/*  <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
           label="Remember me"
@@ -67,9 +64,10 @@ const Login = () => {
         /> */}
         <Button
           type="submit"
+          disabled={authCode.length === 0}
           onClick={() => {
             window.open(
-              "http://localhost:3000/setToken",
+              ` http://localhost:3000/setAuthToken?authCode=${authCode}`,
               "_blank",
               "noopener,noreferrer"
             );

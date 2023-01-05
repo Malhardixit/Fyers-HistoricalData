@@ -4,9 +4,12 @@ const fyers = require("fyers-api-v2");
 const config = require("./config");
 const session = require("express-session");
 const port = process.env.PORT || 3000;
+const dotenv = require("dotenv");
 
-fyers.setAppId(config.id);
-fyers.setRedirectUrl(config.url);
+dotenv.config();
+
+fyers.setAppId(config.id || process.env.ID);
+fyers.setRedirectUrl(config.url || process.env.URL);
 
 // fyers.generateAuthCode();
 
@@ -21,7 +24,7 @@ app.get("/setAuthToken", async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const reqBody = {
     auth_code: req.query.authCode,
-    secret_key: config.secret,
+    secret_key: config.secret || process.env.SECRET,
   };
   const r1 = await fyers.generate_access_token(reqBody);
   console.log("ok", r1);

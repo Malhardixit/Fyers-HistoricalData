@@ -1,5 +1,4 @@
 import "./App.css";
-import Data from "./components/Data";
 import Data2 from "./components/Data2";
 import Login from "./components/Login";
 import TradeBook from "./components/TradeBook";

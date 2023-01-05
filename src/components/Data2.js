@@ -12,7 +12,6 @@ import {
   FormControl,
   Box,
 } from "@material-ui/core";
-import ReactDatePicker from "react-datepicker";
 
 function Data2() {
   const gridRef = useRef();

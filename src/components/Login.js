@@ -8,14 +8,11 @@ import {
   Typography,
   Link,
 } from "@material-ui/core";
-// import { url } from "./config";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const Login = () => {
-  // const URL = url;
-  const newURL = process.env.URL;
+  const url =
+    "https://api.fyers.in/api/v2/generate-authcode?client_id=1Y4RK46YMO-100&redirect_uri=https://fyers-historical-data.onrender.com/ejs&response_type=code&state=sample_state";
+
   const paperStyle = {
     padding: 30,
     height: "45vh",
@@ -84,7 +81,7 @@ const Login = () => {
           Sign in
         </Button>
         <Typography>
-          <Link href={newURL} target="_blank">
+          <Link href={url} target="_blank">
             Click on the link to get the auth code
           </Link>
         </Typography>

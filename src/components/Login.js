@@ -8,10 +8,14 @@ import {
   Typography,
   Link,
 } from "@material-ui/core";
-import { url } from "./config";
+// import { url } from "./config";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Login = () => {
-  const URL = url;
+  // const URL = url;
+  const newURL = process.env.URL;
   const paperStyle = {
     padding: 30,
     height: "45vh",
@@ -80,7 +84,7 @@ const Login = () => {
           Sign in
         </Button>
         <Typography>
-          <Link href={URL} target="_blank">
+          <Link href={newURL} target="_blank">
             Click on the link to get the auth code
           </Link>
         </Typography>

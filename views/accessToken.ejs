@@ -1,0 +1,61 @@
+
+<body>
+    <script>
+
+        function redirectToMenuPage() {
+            window.location.href = "http://localhost:3001/menu";
+        }
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #012;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Poppins;
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        button {
+            display: block;
+            max-width: 190px;
+            text-decoration: none;
+            border-radius: 4px;
+            padding: 20px 30px;
+            transition: 1s cubic-bezier(0.39, 0.5, 0.15, 1.36);
+            color: #00bfff;
+            box-shadow: #00bfff 0 0 0 4px inset;
+            background-color: #012;
+        }
+
+        button:hover {
+            color: #fff;
+            box-shadow: #00bfff 0 0 0 40px inset;
+        }
+    </style>
+
+    <div style="height: 60vh; width: 150vh; border: 1px solid blue; border-radius: 10px;">
+        <div style="color: white; margin: 10px; padding: 10px;text-align: center; ">
+            Thank You! Click below to redirect to Menu page.
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button className='button' onclick="redirectToMenuPage()" class="button">Main Menu</button>      
+        </div>
+
+    </div>
+
+
+
+
+
+    <body />

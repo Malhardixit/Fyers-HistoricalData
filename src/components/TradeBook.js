@@ -186,9 +186,12 @@ function TradeBook() {
     },
   };
 
+  const newURL = "https://fyers-historical-data.onrender.com";
+  const oldURL = "http://localhost:3000";
+
   const onGridReady = useCallback((params) => {
     console.log("Ready");
-    fetch("http://localhost:3000/getTradeBook")
+    fetch(`${newURL}/getTradeBook`)
       .then((resp) => resp.json())
       .then((data) => {
         // console.log(data.tradeBook);

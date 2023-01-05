@@ -207,7 +207,11 @@ function Data2() {
       resizable: true,
     };
   }, []);
-  const URL = `http://localhost:3000/history?symbol=${symbol}&timeframe=${timeframe}&From=${From}&To=${To}`;
+
+  const newURL = "https://fyers-historical-data.onrender.com";
+  const oldURL = "http://localhost:3000";
+
+  const URL = `${newURL}/history?symbol=${symbol}&timeframe=${timeframe}&From=${From}&To=${To}`;
 
   console.log(URL);
 

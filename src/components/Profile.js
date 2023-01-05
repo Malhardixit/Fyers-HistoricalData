@@ -4,8 +4,11 @@ import axios from "axios";
 function Profile() {
   const [info, setInfo] = useState([]);
 
+  const newURL = "https://fyers-historical-data.onrender.com";
+  const oldURL = "http://localhost:3000";
+
   function getData() {
-    axios.get("http://localhost:3000/profile").then((res) => {
+    axios.get(`${newURL}/profile`).then((res) => {
       console.log(res.data.data);
       setInfo(res.data.data);
     });

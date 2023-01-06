@@ -24,7 +24,7 @@ const Login = () => {
     authCode: "",
   });
 
-  const { authCode, authToken } = options;
+  const { authCode } = options;
 
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
@@ -47,22 +47,6 @@ const Login = () => {
           fullWidth
           required
         />
-        {/* <TextField
-          label="TokenCode"
-          value={authToken}
-          onChange={(e) => {
-            setOptions({ ...options, authToken: e.target.value });
-          }}
-          placeholder="Enter password"
-          variant="outlined"
-          fullWidth
-          required
-        /> */}
-        {/*  <FormControlLabel
-          control={<Checkbox name="checkedB" color="primary" />}
-          label="Remember me"
-
-        /> */}
         <Button
           type="submit"
           disabled={authCode.length === 0}

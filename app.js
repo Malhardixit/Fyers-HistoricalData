@@ -16,7 +16,7 @@ fyers.setRedirectUrl(process.env.URL);
 app.set("view engine", "ejs");
 // app.use(express.static("public"));
 
-app.get("/ejs", (req, res) => {
+app.get("/login", (req, res) => {
   res.render("authToken", { url: req.query.auth_code });
 });
 

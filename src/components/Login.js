@@ -68,7 +68,7 @@ const Login = () => {
           disabled={authCode.length === 0}
           onClick={() => {
             window.open(
-              ` http://localhost:3000/setAuthToken?authCode=${authCode}`,
+              `https://fyers-historical-data.onrender.com/setAuthToken?authCode=${authCode}`,
               "_blank",
               "noopener,noreferrer"
             );

@@ -11,7 +11,7 @@ import {
 
 const Login = () => {
   const url =
-    "https://api.fyers.in/api/v2/generate-authcode?client_id=N6SQYBCH90-100&redirect_uri=https://fyers-historical-data.onrender.com/ejs&response_type=code&state=sample_state";
+    "https://api.fyers.in/api/v2/generate-authcode?client_id=N6SQYBCH90-100&redirect_uri=https://fyers-historical-data.onrender.com/login&response_type=code&state=sample_state";
 
   const paperStyle = {
     padding: 30,

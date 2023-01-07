@@ -28,14 +28,18 @@ app.get("/setAuthToken", async (req, res) => {
     client_id: process.env.ID || "N6SQYBCH90-100",
   };
   const r1 = await fyers.generate_access_token(reqBody);
-  console.log("ok", r1);
-  if (r1) {
-    const item = r1.access_token;
-    console.log(item);
-    fyers.setAccessToken(item);
-    res.render("accessToken", {
-      token: r1.s == "error" ? r1.message : r1.access_token,
-    });
+  try {
+    console.log(r1);
+    if (r1) {
+      const item = r1.access_token;
+      console.log(item);
+      fyers.setAccessToken(item);
+      res.render("accessToken", {
+        token: r1.s == "error" ? r1.message : r1.access_token,
+      });
+    }
+  } catch (e) {
+    console.log(e);
   }
 });
 

@@ -25,16 +25,16 @@ app.get("/setAuthToken", async (req, res) => {
   const reqBody = {
     auth_code: req.query.authCode,
     secret_key: process.env.SECRET || "A7BAUF3IVG",
-    client_id: process.env.ID || "N6SQYBCH90-100",
+    // client_id: process.env.ID || "N6SQYBCH90-100",
   };
 
-  console.log(reqBody);
   const r1 = await fyers.generate_access_token(reqBody);
   try {
     console.log(r1);
     if (r1) {
       const item = r1.access_token;
-      console.log(item);
+      console.log("Token", item);
+
       fyers.setAccessToken(item);
       res.render("accessToken", {
         token: r1.s == "error" ? r1.message : r1.access_token,

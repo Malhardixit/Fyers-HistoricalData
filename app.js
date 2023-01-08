@@ -8,8 +8,8 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-fyers.setAppId(process.env.ID);
-fyers.setRedirectUrl(process.env.URL);
+fyers.setAppId("N6SQYBCH90-100");
+fyers.setRedirectUrl("https://fyers-historical-data.onrender.com");
 
 // fyers.generateAuthCode();
 
@@ -21,12 +21,13 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/setAuthToken", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
   const reqBody = {
     auth_code: req.query.authCode,
-    secret_key: process.env.SECRET || "A7BAUF3IVG",
-    client_id: process.env.ID || "N6SQYBCH90-100",
+    secret_key: "A7BAUF3IVG",
+    client_id: "N6SQYBCH90-100",
   };
+
+  console.log(reqBody.auth_code);
 
   const r1 = await fyers.generate_access_token(reqBody);
   try {
@@ -36,6 +37,7 @@ app.get("/setAuthToken", async (req, res) => {
       console.log("Token", item);
 
       fyers.setAccessToken(item);
+      res.header("Access-Control-Allow-Origin", "*");
       res.render("accessToken", {
         token: r1.s == "error" ? r1.message : r1.access_token,
       });

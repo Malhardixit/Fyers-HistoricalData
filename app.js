@@ -24,7 +24,7 @@ app.get("/setAuthToken", async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const reqBody = {
     auth_code: req.query.authCode,
-    secret_key: process.env.SECRET,
+    secret_key: process.env.SECRET || "A7BAUF3IVG",
     client_id: process.env.ID || "N6SQYBCH90-100",
   };
 

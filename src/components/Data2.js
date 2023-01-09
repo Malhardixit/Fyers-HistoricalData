@@ -286,7 +286,7 @@ function Data2() {
           <TextField
             style={{ margin: "8px 0" }}
             label="Symbol"
-            value={symbol}
+            value={symbol.trim()}
             onChange={(e) => {
               setOptions({ ...options, symbol: e.target.value });
             }}

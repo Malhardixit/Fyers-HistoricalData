@@ -18,8 +18,11 @@ function Data2() {
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
   const [rowData, setRowData] = useState();
+
+  const defValue = "NSE:";
+
   const [options, setOptions] = useState({
-    symbol: "",
+    symbol: defValue,
     timeframe: "",
     From: "",
     To: "",
@@ -28,8 +31,6 @@ function Data2() {
 
   console.log("options", options);
   const btnstyle = { margin: "8px 0" };
-
-  const [error, setError] = useState(false);
 
   const [columnDefs, setColumnDefs] = useState([
     {
@@ -215,6 +216,14 @@ function Data2() {
 
   console.log(URL);
 
+  const onInputChanged = (e) => {
+    const newValue = e.target.value;
+
+    if (newValue.startsWith(defValue)) {
+      setOptions({ ...options, symbol: newValue });
+    }
+  };
+
   const onGridReady2 = () => {
     console.log("Ready");
     try {
@@ -287,9 +296,7 @@ function Data2() {
             style={{ margin: "8px 0" }}
             label="Symbol"
             value={symbol.trim()}
-            onChange={(e) => {
-              setOptions({ ...options, symbol: e.target.value });
-            }}
+            onChange={onInputChanged}
             placeholder="Symbol"
             variant="outlined"
             fullWidth
@@ -363,9 +370,8 @@ function Data2() {
             disabled={
               (options.From ||
                 options.To ||
-                options.symbol ||
-                options.symbol ||
-                options.timeframe) === ""
+                options.timeframe ||
+                options.symbol) === "NSE:"
                 ? true
                 : false
             }
@@ -375,7 +381,7 @@ function Data2() {
             style={btnstyle}
             onClick={() => {
               setOptions({
-                symbol: "",
+                symbol: "NSE:",
                 timeframe: "",
                 From: "",
                 To: "",

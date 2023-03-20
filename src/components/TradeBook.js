@@ -39,7 +39,7 @@ function TradeBook() {
       headerName: "BuyQty",
       field: "tradedQty",
       valueGetter: (params) => {
-        if (params.data.side === 1) {
+        if (params.data?.side === 1) {
           return params.data.tradedQty;
         }
       },

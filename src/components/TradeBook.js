@@ -146,7 +146,7 @@ function TradeBook() {
         }
       },
       valueGetter: (params) => {
-        if (params.data.transactionTypside === -1) {
+        if (params.data.side === -1) {
           return "Sell";
         }
       },

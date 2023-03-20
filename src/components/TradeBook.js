@@ -11,6 +11,8 @@ import moment from "moment";
 function TradeBook() {
   const gridRef = useRef();
   const [rowData, setRowData] = useState();
+
+  console.log(rowData);
   const [columnDefs, setColumnDefs] = useState([
     {
       headerName: "Date",
@@ -21,14 +23,14 @@ function TradeBook() {
     {
       headerName: "Quantity",
       field: "tradedQty",
-      hide: true,
-      //   cellStyle: (params) => {
-      //     if (params.data.transactionType === 1) {
-      //       return { color: "white", backgroundColor: "green", width: "100px" };
-      //     } else if (params.data.transactionType === -1) {
-      //       return { color: "white", backgroundColor: "red", width: "100px" };
-      //     }
-      //   },
+      // hide: true,
+      cellStyle: (params) => {
+        if (params.data.transactionType === 1) {
+          return { color: "white", backgroundColor: "green", width: "100px" };
+        } else if (params.data.transactionType === -1) {
+          return { color: "white", backgroundColor: "red", width: "100px" };
+        }
+      },
     },
 
     {
@@ -119,7 +121,7 @@ function TradeBook() {
       },
     },
 
-    { headerName: "TradeValue", field: "tradeValue", hide: true },
+    { headerName: "TradeValue", field: "tradeValue" },
 
     {
       headerName: "Buy",
@@ -191,10 +193,10 @@ function TradeBook() {
 
   const onGridReady = useCallback((params) => {
     console.log("Ready");
-    fetch(`${newURL}/getTradeBook`)
+    fetch(`${oldURL}/getTradeBook`)
       .then((resp) => resp.json())
       .then((data) => {
-        // console.log(data.tradeBook);
+        console.log(data.tradeBook);
         setRowData(data.tradeBook);
       });
   }, []);

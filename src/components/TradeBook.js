@@ -25,9 +25,9 @@ function TradeBook() {
       field: "tradedQty",
       // hide: true,
       cellStyle: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return { color: "white", backgroundColor: "green", width: "100px" };
-        } else if (params.data.transactionType === -1) {
+        } else if (params.data.side === -1) {
           return { color: "white", backgroundColor: "red", width: "100px" };
         }
       },
@@ -37,12 +37,12 @@ function TradeBook() {
       headerName: "BuyQty",
       field: "tradedQty",
       valueGetter: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return params.data.tradedQty;
         }
       },
       cellStyle: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return { color: "white", backgroundColor: "green", width: "100px" };
         }
       },
@@ -52,12 +52,12 @@ function TradeBook() {
       headerName: "Buy",
       field: "tradePrice",
       valueGetter: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return params.data.tradePrice;
         }
       },
       cellStyle: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return { color: "white", backgroundColor: "green", width: "100px" };
         }
       },
@@ -66,12 +66,12 @@ function TradeBook() {
       headerName: "TradeValue(Buy)",
       field: "tradeValue",
       valueGetter: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return params.data.tradeValue;
         }
       },
       cellStyle: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return { color: "white", backgroundColor: "green", width: "100px" };
         }
       },
@@ -81,12 +81,12 @@ function TradeBook() {
       headerName: "SellQty",
       field: "tradedQty",
       valueGetter: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return params.data.tradedQty;
         }
       },
       cellStyle: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return { color: "white", backgroundColor: "red", width: "100px" };
         }
       },
@@ -96,12 +96,12 @@ function TradeBook() {
       headerName: "Sell",
       field: "tradePrice",
       valueGetter: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return params.data.tradePrice;
         }
       },
       cellStyle: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return { color: "white", backgroundColor: "red", width: "100px" };
         }
       },
@@ -110,12 +110,12 @@ function TradeBook() {
       headerName: "TradeValue(Sell)",
       field: "tradeValue",
       valueGetter: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return params.data.tradeValue;
         }
       },
       cellStyle: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return { color: "white", backgroundColor: "red", width: "100px" };
         }
       },
@@ -125,30 +125,30 @@ function TradeBook() {
 
     {
       headerName: "Buy",
-      field: "transactionType",
+      field: "side",
 
       valueGetter: (params) => {
-        if (params.data.transactionType === 1) {
+        if (params.data.side === 1) {
           return "Buy";
         }
       },
-      hide: true,
+      // hide: true,
     },
 
     {
       headerName: "Sell",
-      field: "transactionType",
+      field: "side",
       cellStyle: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return { backgroundColor: "red", color: "white" };
         }
       },
       valueGetter: (params) => {
-        if (params.data.transactionType === -1) {
+        if (params.data.side === -1) {
           return "Sell";
         }
       },
-      hide: true,
+      // hide: true,
     },
 
     { headerName: "OrderNo", field: "exchangeOrderNo" },

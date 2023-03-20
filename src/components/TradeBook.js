@@ -12,6 +12,8 @@ function TradeBook() {
   const gridRef = useRef();
   const [rowData, setRowData] = useState();
 
+  const groupDisplayType = "groupRows";
+
   console.log(rowData);
   const [columnDefs, setColumnDefs] = useState([
     {
@@ -19,7 +21,7 @@ function TradeBook() {
       field: "orderDateTime",
       checkboxSelection: true,
     },
-    { headerName: "Symbol", field: "symbol" },
+    { headerName: "Symbol", field: "symbol", rowGroup: true },
     {
       headerName: "Quantity",
       field: "tradedQty",
@@ -144,7 +146,7 @@ function TradeBook() {
         }
       },
       valueGetter: (params) => {
-        if (params.data.side === -1) {
+        if (params.data.transactionTypside === -1) {
           return "Sell";
         }
       },
@@ -210,6 +212,7 @@ function TradeBook() {
         rowMultiSelectionWithClick={true}
         ref={gridRef}
         popupParent={popupParent}
+        groupDisplayType={groupDisplayType}
         autoGroupColumnDef={autoGroupColumnDef}
         rowData={rowData}
         colWidth="200"

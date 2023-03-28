@@ -153,7 +153,12 @@ function TradeBook() {
       // hide: true,
     },
 
-    { headerName: "OrderNo", field: "exchangeOrderNo" },
+    {
+      headerName: "OrderNo",
+      field: "exchangeOrderNo",
+      rowGroup: true,
+      // rowGroup:true
+    },
   ]);
 
   const defaultColDef = useMemo(() => {

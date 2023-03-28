@@ -128,7 +128,6 @@ function TradeBook() {
     {
       headerName: "Buy",
       field: "side",
-
       valueGetter: (params) => {
         if (params.data?.side === 1) {
           return "Buy";
@@ -152,14 +151,21 @@ function TradeBook() {
       },
       // hide: true,
     },
+    // {
+    //   header:"customOrderId",
+    //   field:,
+    //   valueGetter: (params) => {
+
+    //   }
+    // },
 
     {
       headerName: "OrderNo",
       field: "exchangeOrderNo",
-      rowGroup: true,
-      // rowGroup:true
     },
   ]);
+
+  const customOrderId = Math.floor(Math.random() * 10);
 
   const defaultColDef = useMemo(() => {
     return {
